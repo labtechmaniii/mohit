@@ -21,6 +21,22 @@ const T=Date.parse("2026-12-02T07:00:00+05:30");
 function tick(){let s=Math.floor((T-Date.now())/1e3);if(s<=0){$("cd").innerHTML='<p id="jm">Just Married</p>';return clearInterval(iv)}
 $("d").textContent=Math.floor(s/86400);$("h").textContent=Math.floor(s%86400/3600);$("m").textContent=Math.floor(s%3600/60);$("s").textContent=s%60}
 const iv=setInterval(tick,1000);tick();
+/* ===== IMAGES (all paths come from config.js) ===== */
+document.querySelector(".gimg").src=IMAGES.ganesh;
+document.querySelector(".frame img").src=IMAGES.couple;
+$("fav").href=IMAGES.favicon;
+/* ===== GALLERY + LIGHTBOX (hidden when the gallery list is empty) ===== */
+(function(){const G=IMAGES.gallery||[],n=G.length;if(!n)return;
+$("gallery").hidden=false;
+$("alb").innerHTML=G.map((src,i)=>`<button data-i="${i}" aria-label="Open photo ${i+1}"><img src="${src}" alt="Photo ${i+1}" style="object-position:${IMAGES.galleryPosition||"50% 25%"}" loading="lazy"></button>`).join("");
+const lb=$("lb");let cur=0;
+const show=i=>{cur=(i+n)%n;$("lbi").src=G[cur];$("lbi").alt="Photo "+(cur+1);$("ct").textContent=(cur+1)+" / "+n};
+$("alb").onclick=e=>{const b=e.target.closest("button");if(b){show(+b.dataset.i);lb.classList.add("on");$("cl").focus()}};
+$("pv").onclick=()=>show(cur-1);$("nx").onclick=()=>show(cur+1);$("cl").onclick=()=>lb.classList.remove("on");
+addEventListener("keydown",e=>{if(!lb.classList.contains("on"))return;if(e.key==="Escape")lb.classList.remove("on");if(e.key==="ArrowLeft")show(cur-1);if(e.key==="ArrowRight")show(cur+1)});
+let tx=0;lb.addEventListener("touchstart",e=>tx=e.touches[0].clientX,{passive:true});
+lb.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)show(cur+(d<0?1:-1))},{passive:true});
+})();
 /* ===== SCROLL REVEAL ===== */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll(".rv").forEach((el,i)=>{el.style.transitionDelay=(i%3)*.12+"s";RM?el.classList.add("in"):io.observe(el)});
