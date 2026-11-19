@@ -8,9 +8,9 @@
    folder together in one folder.
    ===================================================================== */
 const IMAGES = {
-  favicon: "images/favicon.svg",   // small icon on the browser tab (.svg, .png or .ico)
-  ganesh:  "images/ganesh.jpg",    // Ganesh ji picture above the blessing
-  couple:  "images/mohit.jpg",     // photo in "The Couple" section
+  favicon: "./favicon.svg",   // small icon on the browser tab (.svg, .png or .ico)
+  ganesh:  "./ganesh.jpg",    // Ganesh ji picture above the blessing
+  couple:  "./mohit.jpg",     // photo in "The Couple" section
 
   // Extra photos (the "Our Moments" gallery with full-screen viewer).
   // Empty list = gallery stays hidden. To show it, add file names, e.g.:
