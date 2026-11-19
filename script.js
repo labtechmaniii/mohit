@@ -6,7 +6,7 @@ const $=id=>document.getElementById(id),RM=matchMedia("(prefers-reduced-motion:r
 const mob=innerWidth<700,dpr=Math.min(devicePixelRatio||1,2);
 const IMAGES = {
   ganesh: "./ganesh.jpg",
-  couple:"./mohit.jpg
+  couple:"./mohit.jpg"
 };
 
 /* ===== EVENTS ===== */
