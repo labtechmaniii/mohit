@@ -4,6 +4,10 @@ const FN=[["Ghritpan","28 November, 2026","Saturday","12:15 PM","20261128T121500
 const RSVP=[["+91 9251423467","Om Prakash panwar","919251423467"],["+91 7737201022","Manish panwar","917737201022"],["+91 9251523467","Mohit panwar","919251523467"],["+91 9461020109","Pankaj panwar","919461020109"]];
 const $=id=>document.getElementById(id),RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
 const mob=innerWidth<700,dpr=Math.min(devicePixelRatio||1,2);
+const IMAGES = {
+  ganesh: "./ganesh.jpg",
+  couple:"./mohit.jpg
+};
 
 /* ===== EVENTS ===== */
 $("tl").innerHTML=FN.map((f,i)=>`<div class="ev rv"><em>${i+1}</em><h3>${f[0]}</h3><p>${f[1]} &middot; ${f[2]}</p><p>${f[3]} &middot; ${VENUE}</p></div>`).join("");
